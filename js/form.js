@@ -10,8 +10,7 @@ botaoAdicionar.addEventListener("click", function(){
     var peso = form.peso.value;
     var altura = form.altura.value;
     var gordura = form.gordura.value;
-    var imc = (peso / Math.pow(altura, 2));
-
+    
     var pacienteTr = document.createElement("tr");
 
     var nomeTd = document.createElement("td");
@@ -24,7 +23,7 @@ botaoAdicionar.addEventListener("click", function(){
     pesoTd.textContent = peso;
     alturaTd.textContent = altura;
     gorduraTd.textContent = gordura;
-    imcTd.textContent = imc.toFixed(2);
+    imcTd.textContent = CalculaImc(peso, altura)
 
     pacienteTr.appendChild(nomeTd);
     pacienteTr.appendChild(pesoTd);

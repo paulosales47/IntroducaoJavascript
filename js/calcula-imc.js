@@ -39,8 +39,7 @@ for(var i = 0; i < pacientes.length; i++)
 
      if(pesoValido && alturaValida)
      {
-         var imc = (peso / Math.pow(altura, 2));
-         textoimc.textContent = imc.toFixed(2);
+         textoimc.textContent = CalculaImc(peso, altura)
      }
      else
      {
@@ -50,3 +49,8 @@ for(var i = 0; i < pacientes.length; i++)
 
 }
 
+//AULA 5
+function CalculaImc(peso, altura)
+{
+    return (peso / Math.pow(altura, 2)).toFixed(2);
+}
