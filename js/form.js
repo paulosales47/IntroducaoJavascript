@@ -6,29 +6,12 @@ botaoAdicionar.addEventListener("click", function(){
     
     var form = document.querySelector("#form-adiciona");
     var paciente = obtemPacienteFormulario(form);
-
-    var pacienteTr = document.createElement("tr");
-
-    var nomeTd = document.createElement("td");
-    var pesoTd = document.createElement("td");
-    var alturaTd = document.createElement("td");
-    var gorduraTd = document.createElement("td");
-    var imcTd = document.createElement("td");
-    
-    nomeTd.textContent = paciente.nome;
-    pesoTd.textContent = paciente.peso;
-    alturaTd.textContent = paciente.altura;
-    gorduraTd.textContent = paciente.gordura;
-    imcTd.textContent = paciente.imc;
-
-    pacienteTr.appendChild(nomeTd);
-    pacienteTr.appendChild(pesoTd);
-    pacienteTr.appendChild(alturaTd);
-    pacienteTr.appendChild(gorduraTd);
-    pacienteTr.appendChild(imcTd);
+    var pacienteTr = constroiTr(paciente);
     
     var tabela = document.querySelector("#tabela-pacientes");
     tabela.appendChild(pacienteTr);
+
+    form.reset();
 });
 
 //AULA 5
@@ -44,4 +27,27 @@ function obtemPacienteFormulario(form)
     }
 
     return paciente;
+}
+
+function constroiTr(paciente)
+{
+    var pacienteTr = document.createElement("tr");
+    pacienteTr.classList.add("paciente")
+
+    pacienteTr.appendChild(constroiTd(paciente.nome, "info-nome"));
+    pacienteTr.appendChild(constroiTd(paciente.peso, "info-peso"));
+    pacienteTr.appendChild(constroiTd(paciente.altura, "info-altura"));
+    pacienteTr.appendChild(constroiTd(paciente.gordura, "info-gordura"));
+    pacienteTr.appendChild(constroiTd(paciente.imc, "info-imc"));
+
+    return pacienteTr;
+}
+
+function constroiTd(texto, classe)
+{
+    var td = document.createElement("td");
+    td.classList.add(classe);
+    td.textContent = texto;
+
+    return td;
 }
