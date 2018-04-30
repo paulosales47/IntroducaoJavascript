@@ -34,10 +34,8 @@ for(var i = 0; i < pacientes.length; i++)
      var peso = paciente.querySelector(".info-peso").textContent;
      var altura = paciente.querySelector(".info-altura").textContent;
      var textoimc = paciente.querySelector(".info-imc");
-     var pesoValido = (peso > 0 && peso < 1000);
-     var alturaValida = (altura > 0 && altura < 4)
-
-     if(pesoValido && alturaValida)
+    
+     if(pesoValido(peso) && alturaValida(altura))
      {
          textoimc.textContent = calculaImc(peso, altura)
      }

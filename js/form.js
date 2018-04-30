@@ -9,9 +9,19 @@ botaoAdicionar.addEventListener("click", function(){
     var pacienteTr = constroiTr(paciente);
     
     var tabela = document.querySelector("#tabela-pacientes");
-    tabela.appendChild(pacienteTr);
+    var mensagem = document.querySelector("#mensagem-cadastro");
+    
+    if(PacienteValido(paciente))
+    {
+        tabela.appendChild(pacienteTr);
+        form.reset();
+    }
+    else
+    {
+        mensagem.textContent = "Valores Informados invalidos";
+        mensagem.classList.add("paciente-invalido");
+    }
 
-    form.reset();
 });
 
 //AULA 5
@@ -50,4 +60,25 @@ function constroiTd(texto, classe)
     td.textContent = texto;
 
     return td;
+}
+
+//AULA 6
+function PacienteValido(paciente)
+{
+    if(pesoValido(paciente.peso) && alturaValida(paciente.altura))
+    {
+        return true;
+    }
+
+    return false;
+}
+
+function pesoValido(peso)
+{
+    return (peso > 0 && peso < 1000);
+}
+
+function alturaValida(altura)
+{
+    return (altura > 0 && altura < 4);
 }
